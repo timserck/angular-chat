@@ -1,0 +1,14 @@
+<div class="chat-container">
+    <div class="messages">
+      <div *ngFor="let msg of chatStore.messages()">
+        <strong>{{ msg.user }}</strong> [{{ msg.timestamp | date:'shortTime' }}]:
+        {{ msg.text }}
+      </div>
+    </div>
+  
+    <form [formGroup]="form" (ngSubmit)="sendMessage()">
+      <input formControlName="message" placeholder="Tapez votre message" />
+      <button type="submit" [disabled]="form.invalid">Envoyer</button>
+    </form>
+  </div>
+  
