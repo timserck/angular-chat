@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  websocket:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    container_name: chat-ws
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - websocket
+    container_name: chat-frontend
